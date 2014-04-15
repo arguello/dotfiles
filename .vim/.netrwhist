@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/floyd/Dropbox/Development/zed/zed-actions-vcim/private_cloud/vcim_create_private_cloud_addon_st'
+let g:netrw_dirhist_2='/Users/farguello/Development/zed/zed-actions-vcim/private_cloud/zed_actionset'
