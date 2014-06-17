@@ -13,7 +13,7 @@ ZSH_THEME="4thfloyd"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ovftool="/Applications/VMware\ OVF\ Tool/ovftool"
+# alias ovftool="/Applications/VMware\ OVF\ Tool/ovftool"
 
 # Set to this to use case-sensitive completion
  CASE_SENSITIVE="true"
@@ -54,6 +54,7 @@ source '/usr/local/share/chruby/auto.sh'
 
 # macports
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # history
 HISTSIZE=1000
