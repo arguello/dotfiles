@@ -21,14 +21,24 @@ set undodir=~/.vim/undo
 " Enable line numbers
 set number
 " Enable syntax highlighting
+set tabstop=4       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+
+set shiftwidth=4    " Indents will have a width of 4
+
+set softtabstop=4   " Sets the number of columns for a TAB
+
+set expandtab       " Expand TABs to spaces
 syntax on
 " Highlight current line
 set cursorline
-set nomodeline
-set showcmd
+"set nomodeline
+"set showcmd
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
+"set list
 " Highlight searches
 set hlsearch
 " Ignore case of searches
@@ -36,19 +46,20 @@ set ignorecase
 " Highlight dynamically as pattern is typed
 set incsearch
 " Always show status line
+"set noshowmode
 set laststatus=2
 " Enable mouse in all modes
-set mouse=a
+"set mouse=a
 " Disable error bells
 set noerrorbells
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
 " Show the cursor position
-set ruler
+"set ruler
 " Don’t show the intro message when starting Vim
 set shortmess=atI
 " Show the current mode
-set showmode
+" set showmode
 " Show the filename in the window titlebar
 set title
 " Show the (partial) command as it’s being typed
@@ -70,11 +81,25 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR
 filetype plugin indent on
 
 execute pathogen#infect()
-" Use the Solarized Dark scheme
-set background=dark
-colorscheme solarized
-
+colorscheme PaperColor
+set shell=/usr/local/bin/zsh
+"highlight LineNr
+let g:airline_theme = "PaperColor"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:gitgutter_sign_column_always = 1
+let g:gitgutter_on_bufenter = 0
+let g:gitgutter_all_on_focusgained = 0
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_lazy_update = 350
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_files = 0
+if executable("ag")
+        set grepprg=ag\ --nogroup\ --nocolor
+        let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+    endif
 " FileType specific settings
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2|set expandtab
 autocmd FileType c setlocal shiftwidth=4 tabstop=4|set noic cin noexpandtab
 autocmd FileType make setlocal shiftwidth=4 tabstop=4|set noic cin noexpandtab
+autocmd FileType python setlocal sw=4 sts=4|set expandtab autoindent
