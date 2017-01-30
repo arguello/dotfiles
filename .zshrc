@@ -1,67 +1,88 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Path to your oh-my-zsh installation.
+  export ZSH=/home/floyd/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-#ZSH_THEME="ys"
-#ZSH_THEME="pygmalion"
-#ZSH_THEME="4thfloyd"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias ovftool="/Applications/VMware\ OVF\ Tool/ovftool"
-### start nicks-homestyle-ssh-configs ###
-alias ssh='~/bin/ssh'
-alias scp='~/bin/scp'
-### end nicks-homestyle-ssh-configs ###
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Set to this to use case-sensitive completion
- CASE_SENSITIVE="true"
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# Comment this out to disable bi-weekly auto-update checks
+# Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment to change how often before auto-updates occur? (in days)
+# Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
 
-# Uncomment following line if you want to disable colors in ls
+# Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
-# Uncomment following line if you want to disable autosetting terminal title.
+# Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
- COMPLETION_WAITING_DOTS="true"
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git per-directory-history rbenv tumx tmuxinator web-search zsh-syntax-highlighting brew brew-cask osx django pip pylint python tmuxinator virtualenv virtualenvwrapper terminalapp github docker docker-compose)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-#source '/usr/local/share/chruby/chruby.sh'
-#source '/usr/local/share/chruby/auto.sh'
 
-# Customize to your needs...
+# User configuration
 
-# macports
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/Applications/Racket/bin:$PATH
-#export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH=/Users/floyd/bin:$PATH
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # history
 HISTSIZE=1000
@@ -72,26 +93,13 @@ setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
+# eval "$(rbenv init -)"
+# alias rake="noglob rake"
+
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-alias rake="noglob rake"
 
-export RUBYMOTION_ANDROID_SDK=~/Development/android-rubymotion/sdk
-export RUBYMOTION_ANDROID_NDK=~/Development/android-rubymotion/ndk
-
-# export WORKON_HOME=~/.virtualenvs
-# source /usr/local/bin/virtualenvwrapper.sh
-export TESSERACT_PATH=/usr/local/bin/tesseract
-export GOPATH=~/Development/projects/go
-export PATH=$PATH:$GOPATH/bin
-export AWS_ACCESS_KEY=msgreports01
-export AWS_SECRET_KEY=Itz0XcJrc+l/3tLGAKaePc2mrfk53uMnWCCljKnL
-#PLAN9=/Users/floyd/Sites/plan9port export PLAN9
-#PATH=$PATH:$PLAN9/bin export PATH
-
-alias vmrun='/Applications/VMware\ Fusion.app/Contents/Library/vmrun'
-alias runmcp='vmrun -T fusion start /Users/floyd/Documents/Virtual\ Machines.localized/mcpdev.vmwarevm/mcpdev.vmx nogui'
-alias goofline='godoc -http=:6060'
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-pyenv virtualenvwrapper
+alias gsubdate="git submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
