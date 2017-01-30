@@ -3,11 +3,11 @@ set nocompatible
 
 " ================== General ==================
 set number                      " Enable line numbers
-set clipboard=unnamed           " Use OS clipboard
 set esckeys                     " Cursor keys in insert mode
-set backspace=indent,eol,start  " Allow backspace in insert mode
 set cursorline                  " Highlight current line
 set ttyfast                     " Optimize for fast terminal connections
+set clipboard=unnamed           " Use OS clipboard
+set backspace=indent,eol,start  " Allow backspace in insert mode
 set encoding=utf-8 nobomb       " Use UTF-* without BOM
 set shell=/usr/bin/zsh          " Don't use Bash
 
@@ -19,11 +19,11 @@ set hidden
 let mapleader=","               " Change mapleader
 
 " ================== display ==================
+set title           " Display filename in window titlebar
 set laststatus=2    " Always show status line
 set noerrorbells    " Disable error bells
 set nostartofline   " Don't reset cursor to start of line when moving around
 set shortmess=atI   " Disable Vim intro message during start
-set title           " Display filename in window titlebar
 set showcmd         " Display the (partial) command as it's typed
 
 syntax on           " Enable syntax highlighting
@@ -95,7 +95,7 @@ execute pathogen#infect()
 " https://github.com/NLKNguyen/papercolor-theme
 colorscheme PaperColor
 
-" Nerd Tree Settings
+" NerdTree
 let NERDTreeIgnore=['.pyc$', '\~$', '__pycache__$', '.git$', '.*\.egg.*$', '.tox', '.coverage.*']
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeShowHidden=1
@@ -107,8 +107,12 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Automatically open NerdTree when vim started with no args
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Close vim when NerdTree is only open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NerdTree Git Plugin symbols
@@ -124,7 +128,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-" Syntastic settings
+" Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol="✗"
@@ -134,31 +138,30 @@ let g:syntastic_style_warning_symbol="⚠"
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args=''
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_javascript_checkers = ['json_tool']
-let g:syntastic_yaml_checkers = ['pyyaml']
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
-" Airline settings
+" Airline
 let g:airline_theme = "PaperColor"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" Gitgutter setings
+" Gitgutter
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_on_bufenter = 0
 let g:gitgutter_all_on_focusgained = 0
 
-" Ctrlp settings
+" Ctrlp
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_lazy_update = 350
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_files = 0
 
-" Neocomplete settings
+" Neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_close_preview = 1
 
+" The Silver Searcher
 if executable("ag")
         set grepprg=ag\ --nogroup\ --nocolor
         let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
