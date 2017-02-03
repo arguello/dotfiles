@@ -9,7 +9,7 @@ set ttyfast                     " Optimize for fast terminal connections
 set clipboard=unnamed           " Use OS clipboard
 set backspace=indent,eol,start  " Allow backspace in insert mode
 set encoding=utf-8 nobomb       " Use UTF-* without BOM
-set shell=/usr/bin/zsh          " Don't use Bash
+set shell=/usr/local/bin/zsh          " Don't use Bash
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -117,14 +117,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " NerdTree Git Plugin symbols
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✭",
+    \ "Modified"  : "¡",
     \ "Staged"    : "+",
     \ "Untracked" : "±",
     \ "Renamed"   : "➜",
     \ "Unmerged"  : "═",
     \ "Deleted"   : "×",
-    \ "Dirty"     : "☢",
-    \ "Clean"     : "⚛",
+    \ "Dirty"     : "!",
+    \ "Clean"     : "✭⚛",
     \ "Unknown"   : "?"
     \ }
 
@@ -138,7 +138,6 @@ let g:syntastic_style_warning_symbol="⚠"
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args=''
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
 " Airline
 let g:airline_theme = "PaperColor"
@@ -170,6 +169,11 @@ endif
 " ================== Languages ==================
 " Golang
 let g:go_fmt_command = "goimports"
+let g:go_metalinter_enabled = ['goimports', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['goimports', 'golint']
+let g:go_metalinter_deadline = "2s"
+let g:go_auto_sameids = 1
 
 " FileType specific settings
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2|set expandtab
